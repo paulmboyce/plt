@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Provider } from "react-redux";
+import AppLoading from "expo-app-loading";
+
+import AppNavigator from "./src/_outer/views/mobile/navigation/Navigation";
+import { fetchAssetsAsync } from "./src/_outer/views/mobile/utils/loadAsync";
+import { reduxStore } from "./src/_outer/frameworks";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	const [isCacheLoaded, setIsCacheLoaded] = useState(false);
+	console.log("Loading app... cache is loaded: ", isCacheLoaded);
+
+	console.log(
+		"**IMPORTANT**: [App.js] Remove composeWithDevTools() for production	"
+	);
+	if (!isCacheLoaded) {
+		return (
+			<AppLoading
+				startAsync={fetchAssetsAsync}
+				onFinish={() => setIsCacheLoaded(true)}
+				onError={console.warn}
+			/>
+		);
+	}
+
+	return (
+		<Provider store={reduxStore}>
+			<AppNavigator />
+		</Provider>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "#fff",
+		alignItems: "center",
+		justifyContent: "center",
+	},
 });
