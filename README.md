@@ -63,33 +63,4 @@ This app is strongly guided by Uncle Bob's Clean Architecture.
 
 A key aspect of Clean Architecture is building to Interfaces. In this respect Typescript should be used. In my vanilla Javascript, without Interfaces, I have resorted to provding "default" values for params to demonstrate the expected object structure.  I am STRONGLY motivated to build this in Typescript.
 
-Although Clean Architecture is not prescriptive for Native Apps nor for Javascript we are guided by principles:
 
-- #### SOLID Design Principles:
-
-  - Single Responsibility Principle
-  - Open Closed Principle
-  - Liskov Substitution Principle
-  - Interface Segregation Principle
-  - Dependency Inversion Principle
-
-NOTE: In pure Javascript we do not have built in Interfaces so Dependency Inversion is more subtle and implicit, rather than enforced by Interfaces.
-
-Typescript may be useful to tghten up with Interface types.
-
-- #### Component Principles:
-
-  - Acyclic Dependency Principle
-  - Instability
-  - Abstractness
-
-- #### Clean Arctitecture:
-
-  Core product vs details.
-
-  - CORE: Entities and Use Cases
-  - MIDDLE: Adapters: Controllers/Gateways/Presenters
-  - OUTER: Devices: IO, USer Interface, Database, Networked Services
-
-  - Loose Coupling
-  - Divide structure by layers ()
